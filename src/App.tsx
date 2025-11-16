@@ -1,5 +1,7 @@
- import React from "react";
+import React from "react";
 import { Home as HomeIcon, Server, Grid, User, Github, Instagram, MessageCircle } from "lucide-react";
+import profilePic from "./assets/profile.png";
+
 
 // ================= App =================
 const App: React.FC = () => {
@@ -123,7 +125,7 @@ const CEO: React.FC = () => (
       <div className="flex flex-col items-center text-center lg:items-start lg:text-left p-8 bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500">
         <img
           className="w-40 h-40 rounded-full border-4 border-blue-600 object-cover mb-4"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO478pTbIEi-6FBU0Icav4ibum-qjAA0Yc5XZ7Th6-AhEGdv3SuuNmWRMLP9e47zDQBfz0iTnbo__fkDAHyL13PMZMbipWE1m83iLgXNNBqHjgknU4bbG_VS1jcfTjlrc0CiCQ3MdJ7O-qS3y3_4iaBZI07pt0MV67_xaIhnGFPbtQHBiSi4h6o7jyRX7Udaolq0VfAz1KlBP7HbGnZmnmn4uuu3wqCI7pzEu5moTuVIncca03vheDQ_9fMGLe7ucB5RstkfAJo66b"
+          src={profilePic}
           alt="Mario Estima"
         />
         <h3 className="text-2xl font-bold text-white">Mario Estima</h3>
@@ -132,7 +134,7 @@ const CEO: React.FC = () => (
           Fundador da Hybrid Tech, com paixão por criar soluções digitais que unem design, performance e inovação.
         </p>
         <p className="text-gray-100 text-sm mb-2">
-          Mais de 10 anos de experiência em desenvolvimento web, mobile e sistemas customizados.
+          Mais de 4 anos de experiência em desenvolvimento web, mobile e sistemas customizados.
         </p>
         <p className="text-gray-100 text-sm">
           Especialista em JavaScript, TypeScript, React, Node.js e integrações complexas com APIs e serviços em nuvem.
