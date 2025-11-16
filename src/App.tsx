@@ -35,9 +35,9 @@ const Header: React.FC = () => (
         <a href="#depoimentos" className="hover:text-blue-600 transition-colors duration-300">Depoimentos</a>
         <a href="#contato" className="hover:text-blue-600 transition-colors duration-300">Contato</a>
         <div className="flex gap-3 ml-4">
-          <a href="https://github.com/" target="_blank" className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"><Github /></a>
-          <a href="https://instagram.com/" target="_blank" className="text-pink-500 hover:text-pink-600 transition-colors duration-300"><Instagram /></a>
-          <a href="https://wa.me/1234567890" target="_blank" className="text-green-500 hover:text-green-600 transition-colors duration-300"><MessageCircle /></a>
+          <a href="https://github.com/marioestima" target="_blank" className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"><Github /></a>
+          <a href="https://instagram.com/mario_estima" target="_blank" className="text-pink-500 hover:text-pink-600 transition-colors duration-300"><Instagram /></a>
+          <a href="https://wa.me/974863664" target="_blank" className="text-green-500 hover:text-green-600 transition-colors duration-300"><MessageCircle /></a>
         </div>
       </div>
       <a
@@ -213,7 +213,7 @@ const Footer: React.FC = () => (
         <Logo />
         <h2 className="font-bold text-lg">Hybrid Tech</h2>
       </div>
-      <p className="text-sm text-gray-400">© 2024 Hybrid Tech. Todos os direitos reservados.</p>
+      <p className="text-sm text-gray-400">© 2025 Hybrid Tech. Todos os direitos reservados.</p>
     </div>
   </footer>
 );
