@@ -1,7 +1,6 @@
-import React from "react";
-import { Home as HomeIcon, Server, Grid, User, Github, Instagram, MessageCircle } from "lucide-react";
+ import React, { useState } from "react";
+import { Home as HomeIcon, Server, Grid, User, Github, Instagram, MessageCircle, Menu, X } from "lucide-react";
 import profilePic from "./assets/profile.png";
-
 
 // ================= App =================
 const App: React.FC = () => {
@@ -22,33 +21,100 @@ const App: React.FC = () => {
 };
 
 // ================= Header =================
-const Header: React.FC = () => (
-  <header className="sticky top-0 z-50 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 transition-all duration-500">
-    <nav className="flex items-center justify-between max-w-6xl mx-auto px-4 py-3">
-      <a href="#" className="flex items-center gap-4 text-gray-900 dark:text-white">
-        <Logo />
-        <h2 className="font-bold text-lg">Hybrid Tech</h2>
-      </a>
-      <div className="hidden lg:flex gap-6 items-center">
-        <a href="#servicos" className="hover:text-blue-600 transition-colors duration-300">Serviços</a>
-        <a href="#sobre" className="hover:text-blue-600 transition-colors duration-300">Sobre</a>
-        <a href="#depoimentos" className="hover:text-blue-600 transition-colors duration-300">Depoimentos</a>
-        <a href="#contato" className="hover:text-blue-600 transition-colors duration-300">Contato</a>
-        <div className="flex gap-3 ml-4">
-          <a href="https://github.com/marioestima" target="_blank" className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"><Github /></a>
-          <a href="https://instagram.com/mario_estima" target="_blank" className="text-pink-500 hover:text-pink-600 transition-colors duration-300"><Instagram /></a>
-          <a href="https://wa.me/974863664" target="_blank" className="text-green-500 hover:text-green-600 transition-colors duration-300"><MessageCircle /></a>
+const Header: React.FC = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  return (
+    <>
+      <header className="sticky top-0 z-50 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 transition-all duration-500">
+        <nav className="flex items-center justify-between max-w-6xl mx-auto px-4 py-3">
+          <a href="#" className="flex items-center gap-4 text-gray-900 dark:text-white">
+            <Logo />
+            <h2 className="font-bold text-lg">Hybrid Tech</h2>
+          </a>
+
+          {/* Menu Desktop */}
+          <div className="hidden lg:flex gap-6 items-center">
+            <a href="#servicos" className="hover:text-blue-600 transition-colors duration-300">Serviços</a>
+            <a href="#sobre" className="hover:text-blue-600 transition-colors duration-300">Sobre</a>
+            <a href="#depoimentos" className="hover:text-blue-600 transition-colors duration-300">Depoimentos</a>
+            <a href="#contato" className="hover:text-blue-600 transition-colors duration-300">Contato</a>
+            <div className="flex gap-3 ml-4">
+              <a href="https://github.com/marioestima" target="_blank" className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"><Github /></a>
+              <a href="https://instagram.com/mario_estima" target="_blank" className="text-pink-500 hover:text-pink-600 transition-colors duration-300"><Instagram /></a>
+              <a href="https://wa.me/974863664" target="_blank" className="text-green-500 hover:text-green-600 transition-colors duration-300"><MessageCircle /></a>
+            </div>
+          </div>
+
+          {/* Botão Mobile */}
+          <button
+            className="lg:hidden text-gray-900 dark:text-white"
+            onClick={() => setSidebarOpen(true)}
+          >
+            <Menu />
+          </button>
+
+          {/* Botão Orçamento */}
+          <a
+            href="#contato"
+            className="hidden sm:inline px-4 py-2 rounded-full bg-blue-600 text-white font-bold hover:scale-105 transition-transform duration-300"
+          >
+            Solicitar Orçamento
+          </a>
+        </nav>
+      </header>
+
+      {/* Sidebar Mobile */}
+      <div
+        className={`fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-all duration-300 ${
+          sidebarOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setSidebarOpen(false)}
+      >
+        <div
+          className={`fixed top-0 left-0 h-full w-64 bg-gray-800 text-white p-6 transition-transform duration-300 ${
+            sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="font-bold text-lg">Hybrid Tech</h2>
+            <button onClick={() => setSidebarOpen(false)}>
+              <X />
+            </button>
+          </div>
+
+          <nav className="flex flex-col gap-4">
+            <a href="#servicos" onClick={() => setSidebarOpen(false)} className="hover:text-blue-500 transition-colors">Serviços</a>
+            <a href="#sobre" onClick={() => setSidebarOpen(false)} className="hover:text-blue-500 transition-colors">Sobre</a>
+            <a href="#depoimentos" onClick={() => setSidebarOpen(false)} className="hover:text-blue-500 transition-colors">Depoimentos</a>
+            <a href="#contato" onClick={() => setSidebarOpen(false)} className="hover:text-blue-500 transition-colors">Contato</a>
+          </nav>
+
+          <div className="mt-8 flex flex-col gap-4">
+            <a href="https://github.com/marioestima" target="_blank" className="flex items-center gap-2 hover:text-gray-300">
+              <Github /> GitHub
+            </a>
+            <a href="https://instagram.com/mario_estima01" target="_blank" className="flex items-center gap-2 hover:text-pink-400">
+              <Instagram /> Instagram
+            </a>
+            <a href="https://wa.me/974863664" target="_blank" className="flex items-center gap-2 hover:text-green-400">
+              <MessageCircle /> WhatsApp
+            </a>
+          </div>
+
+          <a
+            href="#contato"
+            className="mt-8 inline-block px-4 py-2 rounded-full bg-blue-600 text-white font-bold text-center hover:scale-105 transition-transform duration-300"
+            onClick={() => setSidebarOpen(false)}
+          >
+            Solicitar Orçamento
+          </a>
         </div>
       </div>
-      <a
-        href="#contato"
-        className="px-4 py-2 rounded-full bg-blue-600 text-white font-bold hover:scale-105 transition-transform duration-300"
-      >
-        Solicitar Orçamento
-      </a>
-    </nav>
-  </header>
-);
+    </>
+  );
+};
 
 const Logo: React.FC = () => (
   <div className="w-6 h-6 text-blue-600">
@@ -121,7 +187,6 @@ const Sobre: React.FC = () => (
 const CEO: React.FC = () => (
   <section className="py-16 sm:py-24 w-full max-w-6xl px-4 animate-fadeIn">
     <div className="grid lg:grid-cols-3 gap-12 items-center">
-      {/* Card do CEO */}
       <div className="flex flex-col items-center text-center lg:items-start lg:text-left p-8 bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500">
         <img
           className="w-40 h-40 rounded-full border-4 border-blue-600 object-cover mb-4"
@@ -140,12 +205,10 @@ const CEO: React.FC = () => (
           Especialista em JavaScript, TypeScript, React, Node.js e integrações complexas com APIs e serviços em nuvem.
         </p>
       </div>
-
-      {/* Conteúdo adicional sobre o CEO */}
       <div className="lg:col-span-2 flex flex-col gap-4">
         <h2 className="text-3xl font-bold text-white text-center lg:text-left">Conheça Nosso CEO</h2>
         <p className="text-gray-400 text-base">
-          "Desde a primeira linha de código que escrevi, soube que a tecnologia seria mais do que uma profissão; seria minha paixão. Ao longo dos anos, liderei projetos complexos, desenvolvendo soluções que impactaram empresas e usuários em escala global."
+          "Desde a primeira linha de código que escrevi, soube que a tecnologia seria mais do que uma profissão; seria minha paixão..."
         </p>
         <p className="text-gray-400 text-base">
           Ele acredita em escrever código limpo, escalável e eficiente, sempre focado na experiência do usuário e na inovação tecnológica.
